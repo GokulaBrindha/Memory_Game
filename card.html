@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="card.css">
+  
+  </head>
+  <body><div class="container">
+    <h1 class ="title"> 🧠MEMORY CARD</h1>
+    <div class="grid-container">
+      <div class="game"></div>
+      </div>
+    <p>score :0<span class="score "></span></p>
+    <div class="actions">
+        <button onclick="window.location.reload()">RESTART</button>
+        </div>
+        <script>
+      
+      const emojis = ["😀","😀","🥰","🥰","🤩","🤩","😍","😍","😡","😡","😭","😭","😜","😜","😎","😎"];
+      const shuf_emojis = emojis.sort(() => (Math.random() > 0.5) ? 1 : -1);
+    
+      for (let i = 0; i < emojis.length; i++) {
+        let box = document.createElement('div');
+        box.className = 'item';
+        box.innerHTML = shuf_emojis[i];
+        box.onclick=function(){
+          this.classList.add('boxOpen')
+          setTimeout(function (){
+            if(document.querySelectorAll('.boxOpen').length >1){
+              if(document.querySelectorAll('.boxOpen')[0].innerHTML==
+            document.querySelectorAll('.boxOpen')[1].innerHTML){
+              document.querySelectorAll('.boxOpen')[0].classList.add('boxMatch')
+              document.querySelectorAll('.boxOpen')[1].classList.add('boxMatch')
+
+              document.querySelectorAll('.boxOpen')[1].classList.remove
+              ('boxOpen')
+              document.querySelectorAll('.boxOpen')[0].classList.remove
+              ('boxOpen')
+              
+              
+               if(document.querySelectorAll('.boxMatch').length === emojis.length){
+   alert('You win!');
+              
+              }
+           }
+            else{
+              document.querySelectorAll('.boxOpen')[1].classList.remove
+              ('boxOpen')
+               document.querySelectorAll('.boxOpen')[0].classList.remove
+               ('boxOpen')
+
+             }
+           }
+         },500)
+        
+        }
+      document.querySelector('.game').appendChild(box);
+        }
+        
+    
+      
+    </script>
+    <script src="memory.js"></script>
+    
+    
+  </body>
+</html>
